@@ -43,7 +43,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
 
-    public function hasAnyRole($roles){
+    /*public function hasAnyRole($roles){
         if(is_array($roles)){
             foreach ($roles as $role){
                 if($this->hasRole($role)){
@@ -61,5 +61,17 @@ class User extends Authenticatable
         if($this->roles()->where('name', $role)->first()){
             return true;
         }
+    }*/
+
+    public function hasRole( ... $roles ) {
+
+        foreach ($roles as $role) {
+            if ($this->roles->contains('name', $role)) {
+                return true;
+            }
+        }
+        return false;
     }
+
+
 }
