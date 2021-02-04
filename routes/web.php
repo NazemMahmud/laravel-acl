@@ -24,10 +24,4 @@ Route::get('/role', 'HomeController@roles')->name('roles');
 
 Route::group(['middleware' => 'role:admin'], function() {
     Route::get('/admin', 'AdminController@index')->name('admin');
-//    Route::get('/admin', function() {
-//
-//        return 'Welcome Admin';
-//
-//    });
-
 });

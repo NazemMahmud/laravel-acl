@@ -42,6 +42,7 @@ class LoginController extends Controller
         return $this->redirectTo = route($paths[auth()->user()->roles[0]->slug]);
     }
 
+
     /**
      * Create a new controller instance.
      *
