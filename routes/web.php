@@ -22,12 +22,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/role', 'HomeController@roles')->name('roles');
 
-Route::group(['middleware' => 'role:Admin'], function() {
-
-    Route::get('/admin', function() {
-
-        return 'Welcome Admin';
-
-    });
+Route::group(['middleware' => 'role:admin'], function() {
+    Route::get('/admin', 'AdminController@index')->name('admin');
+//    Route::get('/admin', function() {
+//
+//        return 'Welcome Admin';
+//
+//    });
 
 });

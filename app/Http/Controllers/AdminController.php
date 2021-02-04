@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
+     * auth middleware initiate
      * @return void
      */
     public function __construct()
@@ -25,14 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $roles = $user->roles;
-//        foreach ($roles as $role){
-//            echo "<pre>";
-//            var_dump($role->name);
-//            echo "<pre>";
-//        }
-//        dd('done');
-        return view('home');
+        return view('admin_home');
     }
 }

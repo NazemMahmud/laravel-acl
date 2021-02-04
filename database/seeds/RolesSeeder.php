@@ -14,16 +14,19 @@ class RolesSeeder extends Seeder
     {
         $role           = new Role();
         $role->name     = 'User';
+        $role->slug     = 'user';
         $role->description  = 'Normal User';
         $role->save();
 
         $role           = new Role();
         $role->name     = 'Vendor';
+        $role->slug     = 'vendor';
         $role->description  = 'Normal Vendor';
         $role->save();
 
         $role           = new Role();
         $role->name     = 'Admin';
+        $role->slug     = 'admin';
         $role->description  = 'Normal Admin';
         $role->save();
     }
