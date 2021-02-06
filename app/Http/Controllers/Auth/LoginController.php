@@ -29,20 +29,6 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * This is originally written in RedirectsUsers trait -> track from AuthenticatesUsers trait
-     * @return string
-     */
-    public function redirectPath()
-    {
-        $paths = [
-            'admin' => 'admin',
-            'user'  => 'home',
-        ];
-        // because many to many relations
-        return $this->redirectTo = route($paths[auth()->user()->roles[0]->slug]);
-    }
-
-    /**
      * Create a new controller instance.
      *
      * @return void
