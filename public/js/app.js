@@ -53080,7 +53080,63 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
-var routes = [];
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module './pages/Home'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './pages/Register'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './pages/Login'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './pages/user/Dashboard'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './pages/admin/Dashboard'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+ // Pages
+
+
+
+
+
+
+var routes = [{
+  path: '/',
+  name: 'home',
+  component: !(function webpackMissingModule() { var e = new Error("Cannot find module './pages/Home'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  meta: {
+    auth: undefined
+  }
+}, {
+  path: '/register',
+  name: 'register',
+  component: !(function webpackMissingModule() { var e = new Error("Cannot find module './pages/Register'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  meta: {
+    auth: false
+  }
+}, {
+  path: '/login',
+  name: 'login',
+  component: !(function webpackMissingModule() { var e = new Error("Cannot find module './pages/Login'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  meta: {
+    auth: false
+  }
+}, // USER ROUTES
+{
+  path: '/dashboard',
+  name: 'dashboard',
+  component: !(function webpackMissingModule() { var e = new Error("Cannot find module './pages/user/Dashboard'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  meta: {
+    auth: true
+  }
+}, // ADMIN ROUTES
+{
+  path: '/admin',
+  name: 'admin.dashboard',
+  component: !(function webpackMissingModule() { var e = new Error("Cannot find module './pages/admin/Dashboard'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  meta: {
+    auth: {
+      roles: 2,
+      redirect: {
+        name: 'login'
+      },
+      forbiddenRedirect: '/403'
+    }
+  }
+}];
 
 /***/ }),
 
