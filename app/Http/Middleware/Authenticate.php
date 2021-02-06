@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Closure;
 
 class Authenticate extends Middleware
 {
@@ -11,7 +12,9 @@ class Authenticate extends Middleware
     {
         if ($this->authenticate($request, $guards) === 'authentication_error') {
             return response()->json(['error'=>'Unauthorized']);
-        }        return $next($request);
+        }
+
+        return $next($request);
     }
 
     protected function authenticate($request, array $guards)
