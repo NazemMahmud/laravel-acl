@@ -18,13 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['auth:api', 'role:admin']], function() {
-    Route::get('posts', 'PostController@index');
+/**
+ * Laravel sanctum cookie based auth: auth:api does not work/need ?
+ */
+Route::get('posts', 'PostsController@index');
+
+Route::group(['middleware' => ['auth:api']], function() {
+//    Route::get('posts', 'PostsController@index');
     Route::group(['prefix' => 'post'], function () {
-        Route::post('add', 'PostController@add');
-        Route::get('edit/{id}', 'PostController@edit');
-        Route::post('update/{id}', 'PostController@update');
-        Route::delete('delete/{id}', 'PostController@delete');
+        Route::post('add', 'PostsController@add');
+        Route::get('edit/{id}', 'PostsController@edit');
+        Route::post('update/{id}', 'PostsController@update');
+        Route::delete('delete/{id}', 'PostsController@delete');
     });
 
 });

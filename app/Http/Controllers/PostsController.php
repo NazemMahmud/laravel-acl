@@ -11,10 +11,10 @@ class PostsController extends Controller
      * auth middleware initiate
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
 
     // all posts
     public function index()

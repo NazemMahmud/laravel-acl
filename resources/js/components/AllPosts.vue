@@ -37,13 +37,19 @@
     export default {
         data() {
             return {
-                posts: []
+                posts: [{
+                    'id': 1,
+                    "title": "sdas",
+                    "description": " dfsdfdsfsfs f sdfs",
+                    "created_at": "now",
+                    "updated_at": "now"
+                }]
             }
         },
         created() {
-            this.axios
-                .get('http://localhost:8000/api/posts')
+            axios.get('http://localhost:8000/api/posts')
                 .then(response => {
+                    console.log('rrr: ', response);
                     this.posts = response.data;
                 });
         },
