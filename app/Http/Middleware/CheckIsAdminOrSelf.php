@@ -3,11 +3,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckIsAdminOrSelf
 {
     /**
-     * To check this is an admin and the user him/herself
+     * To check this is an admin OR the user him/herself
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -18,7 +19,7 @@ class CheckIsAdminOrSelf
     {
         $requestedUserId = $request->route()->parameter('id');
         if(
-            Auth::user()->role === 2 ||
+            Auth::user()->roles[0]->slug === 'admin' ||
             Auth::user()->id == $requestedUserId
         ) {
             return $next($request);

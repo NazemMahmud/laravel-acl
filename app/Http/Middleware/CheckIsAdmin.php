@@ -17,7 +17,7 @@ class CheckIsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role === 2) {
+        if(Auth::user()->roles[0]->slug === 'admin') {
             return $next($request);
         }
         else {

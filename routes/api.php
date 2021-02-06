@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:api'], function(){
     // Users
-    Route::get('users', 'UserController@index')->middleware('isAdmin');
-    Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
+    Route::get('users', 'UsersController@index')->middleware('isAdmin');
+    Route::get('users/{id}', 'UsersController@show')->middleware('isAdminOrSelf');
 });
 
 Route::prefix('auth')->group(function () {
