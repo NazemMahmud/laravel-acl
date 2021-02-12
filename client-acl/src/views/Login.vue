@@ -35,7 +35,7 @@
         components: {},
         methods: {
             login() {
-                this.$store.dispatch('auth/login', this.form);
+                this.$store.dispatch('auth/login', {_v: this, credentials: this.form});
             }
         }
     }

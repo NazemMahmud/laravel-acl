@@ -11,6 +11,10 @@ export default {
       token: null,
       user: null
   },
+  getters: {
+      authenticated: state => state.token && state.user,
+      authUser: state => state.user,
+  },
   mutations: {
       SET_AUTH_INFO(state, data){
           state.token = data.access_token;
@@ -22,18 +26,19 @@ export default {
       }
   },
   actions: {
-      async login({commit, state, dispatch}, credentials) {
-         await axios.post('auth/login', credentials).then(response => {
-              if(response.status === 200){
-                  dispatch('attempt', response.data);
-              } else {
-                  console.log(response);
-              }
-          });
-      },
-
-      async attempt({commit}, response){
-            commit('SET_AUTH_INFO', response.data);
+      async login({commit, state, dispatch}, data={}) {
+          if (data._v) {
+              const ref = data._v;
+              await axios.post('auth/login', data.credentials).then(response => {
+                  if (response.data.status === 'success') {
+                      commit('SET_AUTH_INFO', response.data);
+                      ref.$router.push({name: 'dashboard'});
+                      
+                  } else {
+                      console.log("Error: ", response);
+                  }
+              });
+          }
       }
   },
   modules: {
