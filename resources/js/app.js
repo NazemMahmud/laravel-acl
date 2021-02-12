@@ -26,9 +26,19 @@ import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import {routes} from './routes';
+import {authConfig} from './auth';
+// import 'es6-promise/auto'
+import Vue from 'vue'
+// import VueAuth from '@websanova/vue-auth'
+
+// import router from './router'// Set Vue globally
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+
+axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`;
+
+// Vue.use(VueAuth, auth)// Load Index
 
 const router = new VueRouter({
     mode: 'history',
@@ -44,5 +54,8 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router: router,
+    config: authConfig,
     render: h => h(App),
 });
+
+console.log('sdda: ', app);

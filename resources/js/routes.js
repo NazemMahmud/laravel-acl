@@ -6,13 +6,22 @@ import Login from './pages/Login'
 import Dashboard from './pages/user/Dashboard'
 import AdminDashboard from './pages/admin/Dashboard'
 
+function guard(to, from, next){
+    if(store.state.login.isLoggedIn === true) {
+        // or however you store your logged in state
+        next(); // allow to enter route
+    } else{
+        next('/login'); // go to '/login';
+    }
+}
+
 export const routes = [
     {
         path: '/',
         name: 'home',
         component: Home,
         meta: {
-            auth: undefined
+            requiresAuth: undefined
         }
     },
     {

@@ -1,8 +1,10 @@
-import bearer from '@websanova/vue-auth/drivers/auth/bearer'
-import axios from '@websanova/vue-auth/drivers/http/axios.1.x'
-import router from '@websanova/vue-auth/drivers/router/vue-router.2.x'
+// import bearer from '@websanova/vue-auth/drivers/auth/bearer'
+// import axios from '@websanova/vue-auth/drivers/http/axios.1.x'
+// import router from '@websanova/vue-auth/drivers/router/vue-router.2.x'
 // Auth base configuration some of this options
 // can be override in method calls
+import axios from 'axios';
+// import Home from "./pages/Home";
 
 /**
  * This file is used for ‘vue-auth’ configuration.
@@ -16,18 +18,18 @@ import router from '@websanova/vue-auth/drivers/router/vue-router.2.x'
  You will find more informations about Vue-Auth configuration on the official documentation
  // official documentaion link not working
  */
-const config = {
-    auth: bearer,
+// auth: bearer,
+// router: router,
+// http: axios,
+export const authConfig = {
+    baseURL: 'http://localhost:8000/api',
     http: axios,
-    router: router,
     tokenDefaultName: 'laravel-vue-spa',
     tokenStore: ['localStorage'],
-    rolesKey: 'role',
-    registerData: {url: 'auth/register', method: 'POST', redirect: '/login'},
-    loginData: {url: 'auth/login', method: 'POST', redirect: '', fetchUser: true},
-    logoutData: {url: 'auth/logout', method: 'POST', redirect: '/', makeRequest: true},
+    rolesKey: 'admin',
+    registerData: {url: '/auth/register', method: 'POST', redirect: '/login'},
+    loginData: {url: '/auth/login', method: 'POST', redirect: '', fetchUser: true},
+    logoutData: {url: '/auth/logout', method: 'POST', redirect: '/', makeRequest: true},
     fetchData: {url: 'users', method: 'GET', enabled: true},
     refreshData: {url: 'auth/refresh', method: 'GET', enabled: true, interval: 30}
-}
-
-export default config
+};

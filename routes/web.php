@@ -17,20 +17,20 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-Auth::routes();
+// Route to handle page reload in Vue except for api routes
+Route::get('/{any?}', function (){
+    return view('layouts.app');
+})->where('any', '^(?!api\/)[\/\w\.-]*');
+//Route::get('/{any}', function (){
+//    return view('layouts.app');
+//})->where('any', '.*');
+
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/role', 'HomeController@roles')->name('roles');
 
 Route::group(['middleware' => 'role:admin'], function() {
     Route::get('/admin', 'AdminController@index')->name('admin');
-//    Route::get('/admin', function() {
-//
-//        return 'Welcome Admin';
-//
-//    });
 
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
